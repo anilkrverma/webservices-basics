@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @Component
@@ -36,6 +37,24 @@ public class UserDaoService {
         ) {
             if (u.getId() == id) {
                 return u;
+            }
+        }
+        return null;
+    }
+
+    public User deleteUser(Integer id) {
+        User user = findUser(id);
+        users.remove(user);
+        return user;
+    }
+
+    public User deleteUserById(Integer id) {
+        Iterator<User> userIterator = users.iterator();
+        while (userIterator.hasNext()){
+            User user = userIterator.next();
+            if(user.getId() == id){
+                userIterator.remove();
+                return user;
             }
         }
         return null;
