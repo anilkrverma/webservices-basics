@@ -1,4 +1,4 @@
-package com.anil.rest.webservicesbasics;
+package com.anil.rest.webservicesbasics.helloworld;
 
 public class HelloWorld {
     private String message;

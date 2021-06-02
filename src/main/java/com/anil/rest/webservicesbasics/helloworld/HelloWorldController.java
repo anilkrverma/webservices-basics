@@ -1,8 +1,6 @@
-package com.anil.rest.webservicesbasics;
+package com.anil.rest.webservicesbasics.helloworld;
 
 import org.springframework.web.bind.annotation.*;
-
-import javax.websocket.server.PathParam;
 
 
 @RestController
