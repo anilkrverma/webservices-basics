@@ -3,13 +3,20 @@ package com.anil.rest.webservicesbasics.user;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
 @ApiModel(description = "User API details")
+@Entity // To covert User Bean to JPA enabled
 public class User {
 
+    @Id
+    @GeneratedValue
     private Integer id;
 
     @Size(min = 2, message = "Name must have at least 2 characters") //this message is triggered when validation fails.
@@ -19,6 +26,9 @@ public class User {
     @Past
     @ApiModelProperty(notes = "Date must be in the past")
     private Date creationDate;
+
+    public User() {
+    }
 
     public User(int id, String name, Date creationDate) {
         this.id = id;

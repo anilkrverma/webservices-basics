@@ -15,21 +15,21 @@ public class UserRepositoryServiceCmdRunner implements CommandLineRunner {
     private static Logger logger = LoggerFactory.getLogger(UserRepositoryServiceCmdRunner.class);
 
     @Autowired
-    private UserRepositoryService userRepositoryService;
+    private UserJpaRepositoryService userJpaRepositoryService;
 
     @Override
     public void run(String... args) throws Exception {
         JpaUser user = new JpaUser("Anil -2 ", "admin");
-        userRepositoryService.save(user);
+        userJpaRepositoryService.save(user);
         logger.info("Inserted user is: " + user);
         logger.info("Inserted user id is: " + user.getId());
 
         //Use more methods provided by UserRepositoryService
 
-        Optional<JpaUser> userByID = userRepositoryService.findById(1L);
+        Optional<JpaUser> userByID = userJpaRepositoryService.findById(1L);
         logger.info("Retrieved user is: " + userByID);
 
-        List<JpaUser> users = userRepositoryService.findAll();
+        List<JpaUser> users = userJpaRepositoryService.findAll();
         logger.info("All users in database: " + users);
 
     }
