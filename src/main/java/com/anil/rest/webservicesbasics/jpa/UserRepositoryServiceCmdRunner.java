@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.Optional;
+
 @Component
 public class UserRepositoryServiceCmdRunner implements CommandLineRunner {
 
@@ -20,5 +23,14 @@ public class UserRepositoryServiceCmdRunner implements CommandLineRunner {
         userRepositoryService.save(user);
         logger.info("Inserted user is: " + user);
         logger.info("Inserted user id is: " + user.getId());
+
+        //Use more methods provided by UserRepositoryService
+
+        Optional<JpaUser> userByID = userRepositoryService.findById(1L);
+        logger.info("Retrieved user is: " + userByID);
+
+        List<JpaUser> users = userRepositoryService.findAll();
+        logger.info("All users in database: " + users);
+
     }
 }
